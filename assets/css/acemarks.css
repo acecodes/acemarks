@@ -13,6 +13,9 @@ a {
 a:hover {
   color: #B02424; }
 
+a.reset {
+  font-size: inherit; }
+
 .btn, .btn:focus {
   outline: none !important; }
 
@@ -45,12 +48,9 @@ a:hover {
   margin: 0px;
   padding: 0px; }
 
-.sidebar .active {
-  background-color: #000; }
-
 .sidebar .active > a {
   text-decoration: none;
-  color: #000; }
+  color: #F5F5F5; }
 
 .main .active span,
 .main .active > a {
