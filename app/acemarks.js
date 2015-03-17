@@ -114,6 +114,14 @@ angular.module('AceMarks', []).controller(
             return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmarkId;
         }
 
+        function deleteBookmark(bookmark) {
+            var index = _.findIndex($scope.bookmarks, function(b) {
+                return b.id === bookmark.id;
+            });
+
+            $scope.bookmarks.splice(index, 1);
+        }
+
 
         // Make functions public (available to views)
 
@@ -131,5 +139,7 @@ angular.module('AceMarks', []).controller(
         $scope.setEditedBookmark = setEditedBookmark;
         $scope.updateBookmark = updateBookmark;
         $scope.isSelectedBookmark = isSelectedBookmark;
+
+        $scope.deleteBookmark = deleteBookmark;
 
     });
