@@ -28,10 +28,15 @@ angular.module('AceMarks', []).controller(
             "category": "Reading"
         }];
 
-        // Categories
+        // Initial values
 
+        $scope.isCreating = false;
+        $scope.isEditing = false;
         $scope.currentCategory = null;
         $scope.editedBookmark = null;
+
+
+        // Categories
 
         function setCurrentCategory(category) {
             $scope.currentCategory = category;
@@ -63,9 +68,6 @@ angular.module('AceMarks', []).controller(
 
         // Creating/editing states
 
-        $scope.isCreating = false;
-        $scope.isEditing = false;
-
         function startCreating() {
             $scope.isCreating = true;
             $scope.isEditing = false;
@@ -94,6 +96,24 @@ angular.module('AceMarks', []).controller(
             return $scope.isEditing && !$scope.isCreating;
         }
 
+        function setEditedBookmark(bookmark) {
+            $scope.editedBookmark = angular.copy(bookmark);
+        }
+
+        function updateBookmark(bookmark) {
+            var index = _.findIndex($scope.bookmarks, function(b) {
+                return b.id === bookmark.id;
+            });
+
+            $scope.bookmarks[index] = bookmark;
+            $scope.editedBookmark = null;
+            $scope.isEditing = false;
+        }
+
+        function isSelectedBookmark(bookmarkId) {
+            return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmarkId;
+        }
+
 
         // Make functions public (available to views)
 
@@ -101,12 +121,15 @@ angular.module('AceMarks', []).controller(
         $scope.isCurrentCategory = isCurrentCategory;
 
         $scope.createBookmark = createBookmark;
-
         $scope.startCreating = startCreating;
         $scope.cancelCreating = cancelCreating;
+        $scope.shouldShowCreating = shouldShowCreating;
+
         $scope.startEditing = startEditing;
         $scope.cancelEditing = cancelEditing;
-        $scope.shouldShowCreating = shouldShowCreating;
         $scope.shouldShowEditing = shouldShowEditing;
+        $scope.setEditedBookmark = setEditedBookmark;
+        $scope.updateBookmark = updateBookmark;
+        $scope.isSelectedBookmark = isSelectedBookmark;
 
     });
