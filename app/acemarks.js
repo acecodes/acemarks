@@ -3,13 +3,14 @@ angular.module('AceMarks', [
     'categories',
     'categories.bookmarks'
 ])
-    .config(function($stateProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('acemarks', {
-                url: '/',
-                templateUrl: 'app/categories/categories.html',
-                controller: 'PrimaryCtrl'
+                url: '',
+                abstract: true
             });
+
+        $urlRouterProvider.otherwise('/');
     })
     .controller(
         'PrimaryCtrl', function($scope) {
