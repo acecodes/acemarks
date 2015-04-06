@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('AceMarks', [
     'ui.router',
     'categories',
@@ -13,33 +15,33 @@ angular.module('AceMarks', [
         $urlRouterProvider.otherwise('/');
     })
     .controller(
-        'PrimaryCtrl', function($scope) {
-            $scope.testing = "Testing, 123";
+        'PrimaryCtrl', function($scope, $state) {
+            $scope.testing = 'Testing, 123';
 
-            $scope.user = "John Doe";
+            $scope.user = 'John Doe';
 
             // Sample data, to be replaced after implementing backend
             $scope.categories = [{
-                "id": 0,
-                "name": "Aviation"
+                'id': 0,
+                'name': 'Aviation'
             }, {
-                "id": 1,
-                "name": "Reading"
+                'id': 1,
+                'name': 'Reading'
             }, {
-                "id": 2,
-                "name": "Nutrition"
+                'id': 2,
+                'name': 'Nutrition'
             }];
 
             $scope.bookmarks = [{
-                "id": 0,
-                "title": "Naval aviation",
-                "url": "http://www.navy.com",
-                "category": "Aviation"
+                'id': 0,
+                'title': 'Naval aviation',
+                'url': 'http://www.navy.com',
+                'category': 'Aviation'
             }, {
-                "id": 1,
-                "title": "Goodreads",
-                "url": "http://www.goodreads.com",
-                "category": "Reading"
+                'id': 1,
+                'title': 'Goodreads',
+                'url': 'http://www.goodreads.com',
+                'category': 'Reading'
             }];
 
             // Initial values
