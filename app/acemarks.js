@@ -20,18 +20,6 @@ angular.module('AceMarks', [
 
             $scope.user = 'John Doe';
 
-            // Sample data, to be replaced after implementing backend
-            $scope.categories = [{
-                'id': 0,
-                'name': 'Aviation'
-            }, {
-                'id': 1,
-                'name': 'Reading'
-            }, {
-                'id': 2,
-                'name': 'Nutrition'
-            }];
-
             // Initial values
 
             $scope.isCreating = false;

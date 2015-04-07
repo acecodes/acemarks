@@ -1,7 +1,7 @@
-<a href="#" ng-click="setCurrentCategory(null)"><h1 class="title">AceMarks</h1></a>
+<a ng-click="setCurrentCategory(null)"><h1 class="title">AceMarks</h1></a>
 <hr />
 <ul class="nav nav-sidebar">
-    <li ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
-        <a ui-sref="acemarks.categories.bookmarks({category:category.name})" href="#" ng-click="setCurrentCategory(category)">{{ category.name }}</a>
+    <li ng-repeat="category in categoriesListCtrl.categories" ng-class="{'active':isCurrentCategory(category)}">
+        <a ui-sref="acemarks.categories.bookmarks({category:category.name})" href="#">{{ category.name }}</a>
     </li>
 </ul>
