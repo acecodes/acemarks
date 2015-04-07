@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('categories.bookmarks', [
     'categories.bookmarks.create',
     'categories.bookmarks.edit',
@@ -11,11 +13,13 @@ angular.module('categories.bookmarks', [
                 views: {
                     'bookmarks@': {
                         templateUrl: 'app/categories/bookmarks/bookmarks.html',
-                        controller: 'BookmarksCtrl'
+                        controller: 'BookmarksListCtrl as bookmarksListCtrl'
                     }
                 }
             });
     })
-    .controller('BookmarksCtrl', function($scope, $stateParams) {
-        $scope.currentCategoryName = $stateParams.category;
+    .controller('BookmarksListCtrl', function($stateParams, BookmarksModel) {
+        var bookmarksListCtrl = this;
+        bookmarksListCtrl.currentCategoryName = $stateParams.category;
+        bookmarksListCtrl.bookmarks = BookmarksModel.getBookmarks();
     });

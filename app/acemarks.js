@@ -32,18 +32,6 @@ angular.module('AceMarks', [
                 'name': 'Nutrition'
             }];
 
-            $scope.bookmarks = [{
-                'id': 0,
-                'title': 'Naval aviation',
-                'url': 'http://www.navy.com',
-                'category': 'Aviation'
-            }, {
-                'id': 1,
-                'title': 'Goodreads',
-                'url': 'http://www.goodreads.com',
-                'category': 'Reading'
-            }];
-
             // Initial values
 
             $scope.isCreating = false;

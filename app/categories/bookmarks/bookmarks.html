@@ -1,9 +1,9 @@
 <h1>{{ user }}'s Bookmarks</h1>
-<h4 ng-show="currentCategory">Category: {{ currentCategory.name }}
+<h4 ng-show="currentCategory">Category: {{ bookmarks.currentCategoryName }}
                 <a class="reset" href="#" ng-click="setCurrentCategory(null)">(Reset)</a></h4>
 <h4 ng-hide="currentCategory">Category: All</h4>
 <hr>
-<div ng-class="{'active':isSelectedBookmark(bookmark.id)}" ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+<div ng-class="{'active':isSelectedBookmark(bookmark.id)}" ng-repeat="bookmark in bookmarksListCtrl.bookmarks | filter:{category:currentCategory.name}">
     <button type="button" class="close" ng-click="deleteBookmark(bookmark)">&times;</button>
     <button type="button" ng-click="setEditedBookmark(bookmark); startEditing();" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span>
     </button>
