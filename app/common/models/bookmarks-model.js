@@ -1,21 +1,23 @@
 'use strict';
 
 angular.module('AceMarks.models.bookmarks', [])
-    .service('BookmarksModel', function() {
+    .service('BookmarksModel', function($http) {
         var model = this,
-            bookmarks = [{
-                'id': 0,
-                'title': 'Naval aviation',
-                'url': 'http://www.navy.com',
-                'category': 'Aviation'
-            }, {
-                'id': 1,
-                'title': 'Goodreads',
-                'url': 'http://www.goodreads.com',
-                'category': 'Reading'
-            }];
+            URLS = {
+                FETCH: 'data/bookmarks.json'
+            },
+            bookmarks;
+
+        function extract(result) {
+            return result.data;
+        }
+
+        function cacheBookmarks(result) {
+            bookmarks = extract(result);
+            return bookmarks;
+        }
 
         model.getBookmarks = function() {
-            return bookmarks;
+            return $http.get(URLS.FETCH).then(cacheBookmarks);
         };
     });

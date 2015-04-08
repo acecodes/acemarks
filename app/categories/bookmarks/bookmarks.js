@@ -12,8 +12,8 @@ angular.module('categories.bookmarks', [
                 url: 'categories/:category',
                 views: {
                     'bookmarks@': {
-                        templateUrl: 'app/categories/bookmarks/bookmarks.html',
-                        controller: 'BookmarksListCtrl as bookmarksListCtrl'
+                        controller: 'BookmarksListCtrl as bookmarksListCtrl',
+                        templateUrl: 'app/categories/bookmarks/bookmarks.html'
                     }
                 }
             });
@@ -21,5 +21,8 @@ angular.module('categories.bookmarks', [
     .controller('BookmarksListCtrl', function($stateParams, BookmarksModel) {
         var bookmarksListCtrl = this;
         bookmarksListCtrl.currentCategoryName = $stateParams.category;
-        bookmarksListCtrl.bookmarks = BookmarksModel.getBookmarks();
+        BookmarksModel.getBookmarks().then(function(result) {
+            bookmarksListCtrl.bookmarks = result;
+            console.log('bookmarks', result);
+        });
     });

@@ -1,21 +1,24 @@
 'use strict';
 
 angular.module('AceMarks.models.categories', [])
-    .service('CategoriesModel', function() {
+    .service('CategoriesModel', function($http) {
         var model = this,
-            categories = [{
-                'id': 0,
-                'name': 'Aviation'
-            }, {
-                'id': 1,
-                'name': 'Reading'
-            }, {
-                'id': 2,
-                'name': 'Nutrition'
-            }];
+            URLS = {
+                FETCH: 'data/categories.json'
+            },
+            categories;
+
+        function extract(result) {
+            return result.data;
+        }
+
+        function cacheCategories(result) {
+            categories = extract(result);
+            return categories;
+        }
 
         model.getCategories = function() {
-            return categories;
+            return $http.get(URLS.FETCH).then(cacheCategories);
         };
 
     });
